@@ -16,6 +16,10 @@ public class read2 {
 
     private static List<List<Object>> values = new ArrayList<List<Object>>();
     public static void main(String... args) throws IOException, GeneralSecurityException {
+        init();
+    }
+
+    private static void init() throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
         final String spreadsheetId = "1LjCBvNAxCm4d9sUbi8ssjc1-Mi5MismbamebjYWqE08"; //PHSP OP
         //final String spreadsheetId = "1PpX11ooHQwk9BYCuRo6HfH295vf9OfupGWMivthm5uQ""; //PHLM IP
@@ -24,6 +28,10 @@ public class read2 {
         Credential credential = setup.getCredentials();
         Sheets service = setup.getSheetsService(credential);
 
+        getValues(spreadsheetId, range, service);
+    }
+
+    private static void getValues(String spreadsheetId, String range, Sheets service) throws IOException {
         ValueRange response = service.spreadsheets().values()
                 .get(spreadsheetId, range)
                 .execute();
