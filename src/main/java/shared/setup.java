@@ -28,7 +28,7 @@ public class setup {
      * @return An authorized Credential object.
      * @throws IOException If the credentials.json file cannot be found.
      */
-    static Credential getCredentials() throws IOException {
+    public static Credential getCredentials() throws IOException {
         Credential credential;
 
         // Load client secrets.
