@@ -66,9 +66,10 @@ public class find1 {
             valueCol = processColumn(rowIdx, headerColumnName, row, columnCount, valueCol, valueLn, col);
         }
 
+        System.out.println("Total columns : "+columnCount);
         System.out.println("Output Row: "+rowIdx+ " : " + valueLn);
         int idColumnIdx=valueLn.indexOf("__PowerAppsId__");
-        System.out.println("Index of __PowerAppsId__ column: "+ idColumnIdx);
+        System.out.println("0-based index of __PowerAppsId__ column: "+ idColumnIdx);
         return rowIdx;
     }
 
