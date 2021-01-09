@@ -32,16 +32,24 @@ public class read2 {
             System.out.println("No data found.");
         } else {
             int rowIdx = 0;
+            ArrayList<String> headerColumnName = new ArrayList<String>();
             for (List<Object> row : values) {
                 rowIdx++;
                 System.out.println("Reading Row: "+rowIdx+" out of : "+values.size());
                 int columnCount = row.size();
+
 //                int columnCount =7;  //<-- you will get indexOutOfBoundException if fixed the column count to read
                 Object valueCol=null;
                 ArrayList<String> valueLn = new ArrayList<String>();
 
-                for (int col = 0; col < columnCount-1; col++) {
-                    System.out.println("Reading columns: "+(col+1)+" out of : "+columnCount);
+                for (int col = 0; col < columnCount; col++) {
+
+                    if (rowIdx==1) {
+                        headerColumnName.add(row.get(col).toString());
+                        System.out.println("Storing header column: "+col +" : "+headerColumnName.get(col));
+                    } else {
+                        System.out.println("Reading columns: "+(col+1)+" out of : "+columnCount+" Name: "+headerColumnName.get(col));
+                    }
 
                     if(row.get(col)!=null){
 //                        System.out.println("getting value " + col);
