@@ -7,9 +7,11 @@ import shared.setup;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
-public class read1 {
+public class read2 {
 
     public static void main(String... args) throws IOException, GeneralSecurityException {
         // Build a new authorized API client service.
@@ -28,19 +30,26 @@ public class read1 {
         if (values == null || values.isEmpty()) {
             System.out.println("No data found.");
         } else {
-//            System.out.println("Name, Major");
-            for (List<Object> row : values) {
-                // Print columns A and E, which correspond to indices 0 and 4.
-                // Note: even if the header contains 5 columns,
-                // below statement will give java.lang.IndexOutOfBoundsException
-                // (not null value yea)
-                // if, for that particular row, from 4th cell to the rest
-                // of the columns on the right contains blank value
-                System.out.printf("%s | %s \n", row.get(0), row.get(4));
 
-                //so need to check first how many columns for each row before trying to print their value
+            for (List<Object> row : values) {
                 int columnCount = row.size();
-                System.out.printf("%d \n", columnCount);
+                Object value=null;
+
+                for (int col = 0; col < columnCount-1; col++) {
+                    if(row.get(col)!=null){
+                        System.out.println("getting value" + col);
+                        value = row.get(col);//.toString();
+                        System.out.println("got value "+ col);
+                    }
+
+                    if (value == null||value.toString().isEmpty()){
+                        System.out.println("null value");
+                    }
+                    else {
+                        System.out.println("value : "+value.toString());
+                    }
+
+                }
 
 
             }
