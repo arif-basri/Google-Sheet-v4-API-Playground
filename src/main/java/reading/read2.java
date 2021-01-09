@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class read2 {
@@ -33,24 +34,28 @@ public class read2 {
 
             for (List<Object> row : values) {
                 int columnCount = row.size();
-                Object value=null;
+//                int columnCount =7;  //<-- you will get indexOutOfBoundException if fixed the column count to read
+                Object valueCol=null;
+                ArrayList<String> valueLn = new ArrayList<String>();
 
                 for (int col = 0; col < columnCount-1; col++) {
                     if(row.get(col)!=null){
-                        System.out.println("getting value" + col);
-                        value = row.get(col);//.toString();
-                        System.out.println("got value "+ col);
+//                        System.out.println("getting value " + col);
+                        valueCol = row.get(col);//.toString();
+//                        System.out.println("got value "+ col);
                     }
 
-                    if (value == null||value.toString().isEmpty()){
-                        System.out.println("null value");
+                    if (valueCol == null||valueCol.toString().isEmpty()){
+//                        System.out.println("null value");
+                        valueLn.add(col, "<null>");
                     }
                     else {
-                        System.out.println("value : "+value.toString());
+//                        System.out.println("value : "+valueCol.toString());
+                        valueLn.add(col, valueCol.toString());
                     }
-
                 }
 
+                System.out.println(valueLn);
 
             }
         }
